@@ -24,8 +24,8 @@
         {{!-- 
           Replace the default fields (title, link, and description) with the correct Solr fields. Then load this page in the browser to see it in action.
         --}}
-        <h4><a href="{{unbound link}}">{{unescapeString title}}</a></h4>
-        <p>{{{description}}}</p>
+        <h4><a href="https://repository.library.brown.edu/studio/item/{{unescapeString pid}}/" target="_blank">{{unescapeString primary_title}}</a></h4>
+        <p>{{{abstract}}}</p>
       </li>
     {{/each}}
   </ul>

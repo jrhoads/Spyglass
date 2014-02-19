@@ -23,23 +23,21 @@ require('scripts/router');
 SgApp.searcher = Sg.SolrSearcher.create({
 
   // Point this value to your Solr instance
-  url: "http://localhost:8983/solr/rss/select",
+  url: "https://repository.library.brown.edu/api/search/",
   
   params: {
 
     // Edit this value to include the fields that you want to return
-    "fl": "title, description, link", 
-
-    // Optionally uncomment the next three lines to include facets, and change the `facet.field` value to match your fields
+    "fl": "primary_title, abstract, pid", 
     "facet": true,
-    "facet.field": ["title"],
-    "facet.limit": 5,
+    "facet.field": ["mods_subject_ssim", "object_type"],
+    "facet.limit": -1,
 
     "q": {},
     "fq": [],
     "start": 0,
     "rows": 10,
-    "wt": "json"
+    //"wt": "json"
   },
   success: function (data) {},
   selectedFacets: Em.ArrayController.create({
@@ -69,8 +67,6 @@ searcher: SgApp.searcher,
 
 SgApp.textFacetGroup = Sg.TextFacetGroup.extend({
   searcher: SgApp.searcher,
-  fieldName: 'abstract_en',
-  displayName: 'Abstract'
 });
 
 /*  
